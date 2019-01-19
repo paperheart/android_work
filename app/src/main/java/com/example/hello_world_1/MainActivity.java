@@ -1,23 +1,16 @@
 package com.example.hello_world_1;
 
-import android.graphics.drawable.Drawable;
-import android.media.Image;
-import android.support.annotation.MainThread;
-import android.support.v7.app.ActionBar;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebView;
-import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.VideoView;
-
-import java.nio.channels.SeekableByteChannel;
-
-import static com.example.hello_world_1.R.string.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -84,5 +77,41 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        final TextView information = findViewById(R.id.Information);
+        final EditText E_main_address = findViewById(R.id.E_main_address);
+        final EditText Phone = findViewById(R.id.Phone);
+        information.setTextColor(Color.argb(0,0,255,0));
+        E_main_address.setTextColor(Color.argb(0,0,255,0));
+        E_main_address.setBackgroundColor(Color.argb(0,0,255,0));
+        E_main_address.setEnabled(false);
+        Phone.setTextColor(Color.argb(0,0,255,0));
+        Phone.setBackgroundColor(Color.argb(0,0,255,0));
+        Phone.setEnabled(false);
+        Switch switch_1 = findViewById(R.id.Swith_1);
+        switch_1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked)
+                {
+                    information.setTextColor(Color.argb(255,0,255,0));
+                    E_main_address.setTextColor(Color.argb(255,255,0,0));
+                    E_main_address.setBackgroundColor(Color.argb(255,255,255,255));
+                    E_main_address.setEnabled(true);
+                    Phone.setTextColor(Color.argb(255,255,0,0));
+                    Phone.setBackgroundColor(Color.argb(255,255,255,255));
+                    Phone.setEnabled(true);
+                }
+                else
+                {
+                    information.setTextColor(Color.argb(0,0,255,0));
+                    E_main_address.setTextColor(Color.argb(0,0,255,0));
+                    E_main_address.setBackgroundColor(Color.argb(0,0,255,0));
+                    E_main_address.setEnabled(false);
+                    Phone.setTextColor(Color.argb(0,0,255,0));
+                    Phone.setBackgroundColor(Color.argb(0,0,255,0));
+                    Phone.setEnabled(false);
+                }
+            }
+        });
     }
 }
